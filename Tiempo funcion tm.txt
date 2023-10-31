@@ -1,0 +1,138 @@
+#include <iostream>
+#include <ctime>
+#include <stdio.h>
+#include <string.h>
+#include <ctime>
+#define MAX 50
+using namespace std;
+void CargarBaseDeDatosSensor();
+class SENSOR
+{
+	private :
+		char MarcaSensor[MAX];
+		char TipoSensor[MAX];
+		char UnidadMedida[MAX];
+	public : 
+		void Setter_MarcaSensor(char *A)
+		{
+			strcpy(MarcaSensor,A);	
+		}
+	
+		void Setter_TipoSensor(char *A)
+		{
+			strcpy(TipoSensor,A);	
+		}
+	
+		void Setter_UnidadDeMedida(char *A)
+		{
+			strcpy(UnidadMedida,A);	
+		}
+		
+		char *Getter_MarcaSensor()
+		{
+			char *A=(char *)malloc(sizeof(strlen(MarcaSensor)));
+			strcpy(A,MarcaSensor);
+			return(A);
+		}
+		
+		char *Getter_TipoSensor()
+		{
+			char *B=(char *)malloc(sizeof(strlen(TipoSensor)));
+			strcpy(B,TipoSensor);
+			return(B);
+		}
+		
+		char *Getter_UnidadDeMedida()
+		{
+			char *C=(char *)malloc(sizeof(strlen(UnidadMedida)));
+			strcpy(C,UnidadMedida);
+			return(C);
+		}
+
+};
+class MEDICION
+{
+	private :
+		time_t FechaRealizada;
+		char Comentarios[150];
+		float ValorMedido;
+		
+	public :
+		SENSOR SensorDeMedicion;
+		void Setter_Comentarios(char *A)
+		{
+			strcpy(Comentarios,A);	
+		}
+		
+		void Setter_ValorMedido(float Valor)
+		{
+			ValorMedido=Valor;	
+		}
+		
+		char *Getter_Comentarios()
+		{
+			char *A;
+			strcpy(A,Comentarios);
+			return(A);
+		}
+		
+		float Getter_ValorMedido()
+		{
+			float Valor;
+			Valor=ValorMedido;
+			return(Valor);
+		}
+	
+};
+
+int main(int argc, char *argv[])
+{
+	int Salir=0;
+	SENSOR Sensore1;
+	SENSOR Sensore2;
+	SENSOR Sensore3;
+	MEDICION SensoresAusar[2];
+	char Sensor1Ma[MAX]="Sony";char Sensor1Me[MAX]="Kilometros";char Sensor1T[MAX]="JJP";
+	char Sensor2Ma[MAX]="Lilliana";char Sensor2Me[MAX]="Milimetros";char Sensor2T[MAX]="HLP";
+	char Sensor3Ma[MAX]="Samsung";char Sensor3Me[MAX]="Metros";char Sensor3T[MAX]="SNP";
+	
+	Sensore1.Setter_MarcaSensor(Sensor1Ma);
+	Sensore1.Setter_TipoSensor(Sensor1T);
+	Sensore1.Setter_UnidadDeMedida(Sensor1Me);
+	
+	Sensore2.Setter_MarcaSensor(Sensor2Ma);
+	Sensore2.Setter_TipoSensor(Sensor2T);
+	Sensore2.Setter_UnidadDeMedida(Sensor2Me);
+
+	
+//	Sensores[2].Setter_MarcaSensor(Sensor3Ma);
+//	Sensores[2].Setter_TipoSensor(Sensor3T);
+//	Sensores[2].Setter_UnidadDeMedida(Sensor3Me);
+//	
+	printf("\nUnidad de Medida: %s\n",Sensore2.Getter_UnidadDeMedida());
+	MEDICION Mediciones;
+	printf("SENSOR 1\n");
+	printf("Marca: %s\n",Sensore1.Getter_MarcaSensor());
+	printf("\nTipo: %s\n",Sensore1.Getter_TipoSensor());
+	printf("\nUnidad de Medida: %s\n",Sensore1.Getter_UnidadDeMedida());
+	fflush(stdin);
+	printf("\nSENSOR 2\n");
+	printf("\nMarca del sensor: %s\n",Sensore2.Getter_MarcaSensor());
+	printf("\nTipo: %s\n",Sensore2.Getter_TipoSensor());
+	printf("\nUnidad de Medida: %s\n",Sensore2.Getter_UnidadDeMedida());
+	fflush(stdin);
+	
+//	printf("SENSOR 3\n");
+//	printf("Marca del sensor: ");
+//	puts(Sensores[2].Getter_MarcaSensor());
+//	printf("Tipo: ");
+//	puts(Sensores[2].Getter_TipoSensor());
+//	printf("\nUnidad de Medida: ");
+//	puts(Sensores[2].Getter_UnidadDeMedida());
+	printf("algo");
+	fflush(stdin);
+	return 0;
+}
+void CargarBaseDeDatosSensor()
+{
+}
